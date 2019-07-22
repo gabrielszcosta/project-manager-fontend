@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import AuthActions from '~/store/ducks/auth';
+
 import { Container, SignForm } from '../styles';
 import Button from '~/styles/componentes/Button';
 
-export default class SignIn extends Component {
+class SignIn extends Component {
+  static propTypes = {
+    signInRequest: PropTypes.func.isRequired,
+  };
+
   state = {
     email: '',
     password: '',
@@ -16,6 +26,9 @@ export default class SignIn extends Component {
     e.preventDefault();
 
     const { email, password } = this.state;
+    const { signInRequest } = this.props;
+
+    signInRequest(email, password);
   };
 
   render() {
@@ -45,3 +58,10 @@ export default class SignIn extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => bindActionCreators(AuthActions, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(SignIn);
