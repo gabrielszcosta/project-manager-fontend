@@ -6,17 +6,14 @@ import { bindActionCreators } from 'redux';
 import AuthActions from '~/store/ducks/auth';
 
 import { Container, SignForm } from '../styles';
-import Button from '~/styles/componentes/Button';
+import Button from '~/styles/components/Button';
 
 class SignIn extends Component {
   static propTypes = {
     signInRequest: PropTypes.func.isRequired,
   };
 
-  state = {
-    email: '',
-    password: '',
-  };
+  state = { email: '', password: '' };
 
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
