@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+import api from '~/services/api';
 
-// import { Container } from './styles';
+import TeamSwitcher from '~/components/TeamSwitcher';
+import { Container } from './styles';
 
-const Main = () => <div />;
+export default class Main extends Component {
+  componentDidMount() {}
 
-export default Main;
+  render() {
+    return (
+      <Container>
+        <TeamSwitcher />
+      </Container>
+    );
+  }
+}
