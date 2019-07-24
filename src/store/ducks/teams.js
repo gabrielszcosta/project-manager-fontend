@@ -32,7 +32,7 @@ export const selectTeam = (state, { team }) => {
   return state.merge({ active: team });
 };
 
-export const createTeamSuccess = (state, { team }) => state.merge({ ...state.data, team });
+export const createTeamSuccess = (state, { team }) => state.merge({ data: [...state.data, team] });
 
 export const openModal = state => state.merge({ teamModalOpen: true });
 export const closeModal = state => state.merge({ teamModalOpen: false });

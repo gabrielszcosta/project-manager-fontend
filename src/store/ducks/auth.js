@@ -14,7 +14,7 @@ export const INITIAL_STATE = Immutable({
   token: localStorage.getItem('@app:token') || null,
 });
 
-export const success = (state, { token }) => state.merge({ signIn: true, token });
+export const success = (state, { token }) => state.merge({ signedIn: true, token });
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.SIGN_IN_SUCCESS]: success,

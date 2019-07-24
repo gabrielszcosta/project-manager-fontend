@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   background: #36393f;
   border-radius: 5px;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 1);
   padding: 40px;
   width: ${props => (props.size === 'big' ? 600 : 400)}px;
 
@@ -42,8 +42,8 @@ export const Content = styled.div`
       height: 40px;
       padding: 10px;
       border-radius: 3px;
-      border: 1px solid rgba(0, 0, 0.3);
-      background-color: rgba(0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.1);
       color: #f6f6f6;
       margin-top: 8px;
       transition: border 0.15s ease;

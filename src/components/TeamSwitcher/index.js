@@ -85,7 +85,7 @@ class TeamSwitcher extends Component {
                   <Button size="big" type="submit" onClick={() => {}}>
                     Salvar
                   </Button>
-                  <Button size="small" color="gray" onClick={closeTeamModal}>
+                  <Button size="small" color="danger" onClick={closeTeamModal}>
                     Cancelar
                   </Button>
                 </form>
