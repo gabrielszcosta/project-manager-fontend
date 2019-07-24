@@ -44,7 +44,23 @@ export const NewTeam = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    border: 1px dashed rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
+  }
+`;
+
+export const Logout = styled.button`
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed #e04848;
+  background: transparent;
+  color: #e04848;
+  font-weight: bold;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #a43d3d;
+    color: #a43d3d;
   }
 `;
