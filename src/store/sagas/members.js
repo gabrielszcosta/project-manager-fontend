@@ -19,6 +19,7 @@ export function* updateMember({ id, roles }) {
         title: 'Membro atualizado',
         message: 'Membro atualizado com sucesso!',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   } catch (error) {
@@ -28,6 +29,7 @@ export function* updateMember({ id, roles }) {
         title: 'Erro ao atualizar',
         message: 'Falha na atualização do membro',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }
@@ -42,6 +44,7 @@ export function* inviteMember({ email }) {
         title: 'Convite enviado',
         message: 'Foi enviado um convite para o usuário participar do time',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   } catch (error) {
@@ -51,6 +54,7 @@ export function* inviteMember({ email }) {
         title: 'Erro ao enviar',
         message: 'Falha no envio do convite',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }

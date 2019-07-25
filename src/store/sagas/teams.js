@@ -22,6 +22,7 @@ export function* createTeam({ name }) {
         title: 'Erro ao salvar',
         message: 'Falha na criação do time',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }
@@ -38,6 +39,7 @@ export function* deleteTeam() {
         title: 'Sucesso',
         message: 'Time excluído com sucesso',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   } catch (error) {
@@ -47,6 +49,7 @@ export function* deleteTeam() {
         title: 'Erro ao excluir',
         message: 'Falha na exclusão do time',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }

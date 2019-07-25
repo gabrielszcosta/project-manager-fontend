@@ -22,6 +22,7 @@ export function* createProject({ title }) {
         title: 'Erro ao salvar',
         message: 'Falha na criação do projeto',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }
@@ -37,6 +38,7 @@ export function* deleteProject({ id }) {
         title: 'Sucesso',
         message: 'Projeto excluído com sucesso',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   } catch (error) {
@@ -46,6 +48,7 @@ export function* deleteProject({ id }) {
         title: 'Erro ao excluir',
         message: 'Falha na exclusão do projeto',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }

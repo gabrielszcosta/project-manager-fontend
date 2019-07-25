@@ -20,6 +20,7 @@ export function* signIn({ email, password }) {
         title: 'Erro ao fazer login',
         message: 'E-mail ou senha inválidos',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }
@@ -40,6 +41,7 @@ export function* signUp({ name, email, password }) {
         title: 'Erro no cadastro',
         message: 'Você foi convidado para algum time?',
         timeOut: 5,
+        closeButton: true,
       }),
     );
   }
