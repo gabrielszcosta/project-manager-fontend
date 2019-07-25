@@ -26,3 +26,27 @@ export function* createProject({ title }) {
     );
   }
 }
+
+export function* deleteProject({ id }) {
+  try {
+    yield call(api.delete, `projects/${id}`);
+    yield put(ProjectsActions.deleteProjectSuccess(id));
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Sucesso',
+        message: 'Projeto excluído com sucesso',
+        timeOut: 5,
+      }),
+    );
+  } catch (error) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Erro ao excluir',
+        message: 'Falha na exclusão do projeto',
+        timeOut: 5,
+      }),
+    );
+  }
+}

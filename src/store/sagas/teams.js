@@ -26,3 +26,28 @@ export function* createTeam({ name }) {
     );
   }
 }
+
+export function* deleteTeam() {
+  try {
+    const team = JSON.parse(localStorage.getItem('@app:team'));
+    yield call(api.delete, `teams/${team.id}`);
+    yield put(TeamsActions.deleteTeamSuccess());
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Sucesso',
+        message: 'Time excluído com sucesso',
+        timeOut: 5,
+      }),
+    );
+  } catch (error) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Erro ao excluir',
+        message: 'Falha na exclusão do time',
+        timeOut: 5,
+      }),
+    );
+  }
+}

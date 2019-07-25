@@ -24,6 +24,8 @@ export const Container = styled.div`
 `;
 
 export const Project = styled.div`
+  display: flex;
+  justify-content: space-between;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 0 0 20px;

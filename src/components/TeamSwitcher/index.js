@@ -9,6 +9,8 @@ import AuthActions from '~/store/ducks/auth';
 import Modal from '~/components/Modal';
 import Button from '~/styles/components/Button';
 
+import 'font-awesome/css/font-awesome.css';
+
 import {
   Container, TeamList, Team, NewTeam, Logout,
 } from './styles';
@@ -82,7 +84,7 @@ class TeamSwitcher extends Component {
             </Team>
           ))}
 
-          <NewTeam onClick={openTeamModal}>NOVO</NewTeam>
+          <NewTeam onClick={openTeamModal}><i className="fa fa-plus" /></NewTeam>
           {
             teams.teamModalOpen && (
               <Modal>
@@ -101,7 +103,7 @@ class TeamSwitcher extends Component {
             )
           }
         </TeamList>
-        <Logout onClick={signOut}>SAIR</Logout>
+        <Logout onClick={signOut}><i className="fa fa-sign-out" /></Logout>
       </Container>
     );
   }

@@ -5,12 +5,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ProjectsAction from '~/store/ducks/projects';
 import MembersAction from '~/store/ducks/members';
+import TeamAction from '~/store/ducks/teams';
 
 import { Container, Project } from './styles';
 
+import Can from '~/components/Can';
 import Modal from '~/components/Modal';
 import Members from '~/components/Members';
 import Button from '~/styles/components/Button';
+
+import 'font-awesome/css/font-awesome.css';
 
 class Projects extends Component {
   static propTypes = {
@@ -19,9 +23,11 @@ class Projects extends Component {
     openProjectModal: PropTypes.func.isRequired,
     closeProjectModal: PropTypes.func.isRequired,
     openMembersModal: PropTypes.func.isRequired,
+    deleteProjectRequest: PropTypes.func.isRequired,
+    deleteTeamRequest: PropTypes.func.isRequired,
     activeTeam: PropTypes.shape({
       name: PropTypes.string,
-    }).isRequired,
+    }),
     projects: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
@@ -35,7 +41,11 @@ class Projects extends Component {
       membersModalOpen: PropTypes.bool,
     }).isRequired,
   };
- 
+
+  static defaultProps = {
+    activeTeam: null,
+  }
+
   state = {
     newProject: '',
   }
@@ -61,6 +71,16 @@ class Projects extends Component {
     createProjectRequest(newProject);
   };
 
+  handleDeleteTeam = () => {
+    const { deleteTeamRequest } = this.props;
+    deleteTeamRequest();
+  }
+
+  handleDeleteProject(id) {
+    const { deleteProjectRequest } = this.props;
+    deleteProjectRequest(id);
+  }
+
   render() {
     const { activeTeam, projects, members, openProjectModal, closeProjectModal, openMembersModal } = this.props;
     const { newProject } = this.state;
@@ -72,13 +92,19 @@ class Projects extends Component {
         <header>
           <h1>{activeTeam.name}</h1>
           <div>
-            <Button onClick={openProjectModal}>+ Novo</Button>
+            <Can checkPermission="projects_create">
+              <Button onClick={openProjectModal}>
+                <i className="fa fa-plus" /> Novo
+              </Button>
+            </Can>
             <Button onClick={openMembersModal}>Membros</Button>
+            <Button color="danger" onClick={this.handleDeleteTeam}><i className="fa fa-trash" /> Excluir</Button>
           </div>
         </header>
         {projects.data.map(project => (
           <Project key={project.id}>
             <p>{project.title}</p>
+            <Button color="danger" onClick={() => this.handleDeleteProject(project.id)}><i className="fa fa-trash" /></Button>
           </Project>
         ))}
         {projects.projectModalOpen && (
@@ -103,7 +129,7 @@ class Projects extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ ...ProjectsAction, ...MembersAction }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...ProjectsAction, ...MembersAction, ...TeamAction }, dispatch);
 
 const mapStateToProps = state => ({
   activeTeam: state.teams.active,

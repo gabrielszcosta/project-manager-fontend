@@ -32,3 +32,26 @@ export function* updateMember({ id, roles }) {
     );
   }
 }
+
+export function* inviteMember({ email }) {
+  try {
+    yield call(api.post, 'invites', { invites: [email] });
+    yield put(
+      toastrActions.add({
+        type: 'success',
+        title: 'Convite enviado',
+        message: 'Foi enviado um convite para o usuário participar do time',
+        timeOut: 5,
+      }),
+    );
+  } catch (error) {
+    yield put(
+      toastrActions.add({
+        type: 'error',
+        title: 'Erro ao enviar',
+        message: 'Falha no envio do convite',
+        timeOut: 5,
+      }),
+    );
+  }
+}

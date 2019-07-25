@@ -17,25 +17,25 @@ const sizes = {
 
 const colors = {
   default: css`
-    background: #7289da;
+    background: #5f73bc;
 
     &:hover {
-      background: #5f73bc;
+      background: #7289da;
     }
   `,
   danger: css`
-    background: #e04848;
+    background: #a43d3d;
 
     &:hover {
-      background: #a43d3d;
+      background: #e04848;
     }
   `,
 
   success: css`
-    background: #26b158;
+    background: #1e9248;
 
     &:hover {
-      background: #1e9248;
+      background: #26b158;
     }
   `,
   gray: css`
