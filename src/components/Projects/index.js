@@ -97,7 +97,7 @@ class Projects extends Component {
                 <i className="fa fa-plus" /> Novo
               </Button>
             </Can>
-            <Button onClick={openMembersModal}>Membros</Button>
+            <Button onClick={openMembersModal}><i className="fa fa-users" /> Membros</Button>
             <Button color="danger" onClick={this.handleDeleteTeam}><i className="fa fa-trash" /> Excluir</Button>
           </div>
         </header>

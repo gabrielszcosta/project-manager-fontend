@@ -36,7 +36,7 @@ export const NewTeam = styled.button`
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
   margin: 0 0 8px;
   background: transparent;
   color: rgba(255, 255, 255, 0.3);
@@ -45,12 +45,17 @@ export const NewTeam = styled.button`
 
   i {
     font-size: 25px;
+    color: #43b581;
   }
 
   &:hover {
-    border-color: #26ff03c2;
-    color: #26ff03c2;
+    border-color: #43b581;
+    background: #43b581;
     border-radius: 30%;
+
+    i {
+      color: #fff;
+    }
   }
 `;
 
@@ -58,7 +63,7 @@ export const Logout = styled.button`
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  border: 2px dashed #a43d3d;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
   color: #a43d3d;
   background: transparent;
   font-weight: bold;
@@ -70,7 +75,11 @@ export const Logout = styled.button`
 
   &:hover {
     border-color: #e04848;
-    color: #e04848;
+    background: #e04848;
     border-radius: 30%;
+
+    i {
+      color: #fff;
+    }
   }
 `;
