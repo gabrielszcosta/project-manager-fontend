@@ -2,7 +2,6 @@ import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
 /* Types & Action Creators */
-
 const { Types, Creators } = createActions({
   getTeamsRequest: null,
   getTeamsSuccess: ['data'],
@@ -17,7 +16,6 @@ export const TeamsTypes = Types;
 export default Creators;
 
 /* Initial State */
-
 export const INITIAL_STATE = Immutable({
   data: [],
   teamModalOpen: false,
@@ -25,7 +23,6 @@ export const INITIAL_STATE = Immutable({
 });
 
 /* Reducers */
-
 export const getSuccess = (state, { data }) => state.merge({ data });
 export const selectTeam = (state, { team }) => {
   localStorage.setItem('@app:team', JSON.stringify(team));
@@ -38,7 +35,6 @@ export const openModal = state => state.merge({ teamModalOpen: true });
 export const closeModal = state => state.merge({ teamModalOpen: false });
 
 /* Reducers to types */
-
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_TEAMS_SUCCESS]: getSuccess,
   [Types.SELECT_TEAM]: selectTeam,

@@ -11,8 +11,8 @@ export function* getTeams() {
 }
 
 export function* createTeam({ name }) {
-  const response = yield call(api.post, 'teams', { name });
   try {
+    const response = yield call(api.post, 'teams', { name });
     yield put(TeamsActions.createTeamSuccess(response.data));
     yield put(TeamsActions.closeTeamModal());
   } catch (error) {

@@ -6,11 +6,16 @@ import { bindActionCreators } from 'redux';
 import ProjectsAction from '~/store/ducks/projects';
 
 import { Container, Project } from './styles';
+
+import Modal from '~/components/Modal';
 import Button from '~/styles/components/Button';
 
 class Projects extends Component {
   static propTypes = {
     getProjectsRequest: PropTypes.func.isRequired,
+    createProjectRequest: PropTypes.func.isRequired,
+    openProjectModal: PropTypes.func.isRequired,
+    closeProjectModal: PropTypes.func.isRequired,
     activeTeam: PropTypes.shape({
       name: PropTypes.string,
     }).isRequired,
@@ -21,8 +26,13 @@ class Projects extends Component {
           title: PropTypes.string,
         }),
       ),
+      projectModalOpen: PropTypes.bool,
     }).isRequired,
   };
+
+  state = {
+    newProject: '',
+  }
 
   componentDidMount() {
     const { getProjectsRequest, activeTeam } = this.props;
@@ -32,8 +42,22 @@ class Projects extends Component {
     }
   }
 
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleCreateProject = (e) => {
+    e.preventDefault();
+
+    const { newProject } = this.state;
+    const { createProjectRequest } = this.props;
+
+    createProjectRequest(newProject);
+  };
+
   render() {
-    const { activeTeam, projects } = this.props;
+    const { activeTeam, projects, openProjectModal, closeProjectModal } = this.props;
+    const { newProject } = this.state;
 
     if (!activeTeam) return null;
 
@@ -42,7 +66,7 @@ class Projects extends Component {
         <header>
           <h1>{activeTeam.name}</h1>
           <div>
-            <Button onClick={() => {}}>+ Novo</Button>
+            <Button onClick={openProjectModal}>+ Novo</Button>
             <Button onClick={() => {}}>Membros</Button>
           </div>
         </header>
@@ -51,6 +75,21 @@ class Projects extends Component {
             <p>{project.title}</p>
           </Project>
         ))}
+        {projects.projectModalOpen && (
+          <Modal>
+            <h1>Criar projeto</h1>
+            <form onSubmit={this.handleCreateProject}>
+              <span>NOME</span>
+              <input name="newProject" value={newProject} onChange={this.handleInputChange} />
+              <Button size="big" type="submit" onClick={() => {}}>
+                Salvar
+              </Button>
+              <Button size="small" color="danger" onClick={closeProjectModal}>
+                Cancelar
+              </Button>
+            </form>
+          </Modal>
+        )}
       </Container>
     );
   }
