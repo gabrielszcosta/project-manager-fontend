@@ -53,4 +53,9 @@ export const SignForm = styled.form`
   button {
     margin: 20px 0 0;
   }
+
+  a {
+    text-decoration: none;
+    color: #8da4f9;
+  }
 `;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import AuthActions from '~/store/ducks/auth';
@@ -53,6 +54,11 @@ class SignUp extends Component {
           <Button size="big" type="submit">
             Criar
           </Button>
+          <span>
+            Já possui conta?
+            {' '}
+            <Link to="/signin">Clique aqui.</Link>
+          </span>
         </SignForm>
       </Container>
     );
